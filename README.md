@@ -9,7 +9,7 @@ because of its large file size.
 
 ## Dataset Download
 
-[Download the FDIA-SyntheticMicroGrid dataset](YOUR_GOOGLE_DRIVE_LINK)
+[Download the FDIA-SyntheticMicroGrid dataset](https://drive.google.com/drive/folders/1jliFArrNFQDVikB4CFjcD3FBAbI1Ae0N?usp=sharing)
 
 ## Dataset Configurations
 
