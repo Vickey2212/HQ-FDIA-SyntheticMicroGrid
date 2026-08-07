@@ -5,5 +5,5 @@ FDIA-SyntheticMicroGrid dataset and the proposed detection framework.
 
 ## Directory Structure
 
-- `pipeline/` – Processing pipeline.
-- `feature_extraction/` – Feature extraction and feature engineering scripts.
+- `pipeline/` – Proposed pipeline.
+- `feature_extraction/` – Feature selection and feature engineering scripts.
