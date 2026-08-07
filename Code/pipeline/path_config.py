@@ -53,4 +53,8 @@ VAL_CSV_PATH = Path(args.val)
 OUTPUT_DIR = Path(args.output)
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
+SAVE_DIR = Path(args.output)
+SAVE_DIR.mkdir(parents=True, exist_ok=True) = Path(args.output)
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
 BEST_PATH = OUTPUT_DIR / "best_classical_end2end_binary.pt"
