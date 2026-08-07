@@ -7,6 +7,7 @@ import pandas as pd
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from torch.utils.data import Dataset, DataLoader, WeightedRandomSampler
-import pennylane as qml.
+from torch.utils.data import Dataset, DataLoader, WeightedRandomSampler, Subset
+import pennylane as qml
+import random
 from tqdm.auto import tqdm
