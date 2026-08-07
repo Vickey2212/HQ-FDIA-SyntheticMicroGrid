@@ -20,3 +20,12 @@ GNN_STEPS = 4
 
 # Classification threshold
 THRESHOLD = 0.45
+
+# IEEE 30-bus network topology.
+# Bus numbering follows the standard 1-based IEEE convention.
+EDGE_LIST_1BASED = [
+    (1, 2),
+    (1, 3),
+    ...
+    (25, 26),
+]
