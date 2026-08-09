@@ -7,7 +7,6 @@ rank_df["rf_score_norm"] = rank_df["rf_score"] / (rank_df["rf_score"].max() + 1e
 # Combined score: average normalized importance
 rank_df["combined_score"] = 0.5 * rank_df["mi_score_norm"] + 0.5 * rank_df["rf_score_norm"]
 
-# Combined rank: smaller is better
 rank_df["rank_sum"] = rank_df["mi_rank"] + rank_df["rf_rank"]
 
 # Final sort
@@ -18,5 +17,3 @@ rank_df = rank_df.sort_values(
 
 rank_df["final_rank"] = np.arange(1, len(rank_df) + 1)
 
-print("\nTop 20 selected features preview:")
-print(rank_df[["final_rank", "feature", "mi_score", "rf_score", "combined_score"]].head(20))
