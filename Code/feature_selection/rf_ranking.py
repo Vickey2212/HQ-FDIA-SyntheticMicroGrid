@@ -1,6 +1,5 @@
 print("Training Random Forest for feature importance...")
 
-# Keep RF moderate so it runs in Colab
 rf = RandomForestClassifier(
     n_estimators=200,
     max_depth=None,
