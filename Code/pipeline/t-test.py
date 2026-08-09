@@ -327,7 +327,7 @@ def run_one_experiment(cfg, run):
         # EARLY STOPPING
         # ======================================
         if counter >= PATIENCE:
-            print("🛑 Early stopping triggered.")
+            print("Early stopping triggered.")
             break
 
     # ======================================
