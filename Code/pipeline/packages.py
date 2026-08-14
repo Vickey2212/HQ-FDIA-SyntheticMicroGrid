@@ -17,6 +17,7 @@ from sklearn.metrics import (
     f1_score,
     roc_auc_score,
     confusion_matrix,
+    roc_curve
 )
 import seaborn as sns
 import time
