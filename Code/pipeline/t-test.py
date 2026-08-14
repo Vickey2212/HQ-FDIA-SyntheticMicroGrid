@@ -114,7 +114,6 @@ def build_model(config):
             def __init__(self, n_buses, edge_list_1based):
                 super().__init__(n_buses, edge_list_1based)
 
-                # GNN normally converts 32 -> 64
                 self.feature_projection = nn.Sequential(
                     nn.Linear(T_OUT, NODE_HIDDEN),
                     nn.ReLU()
