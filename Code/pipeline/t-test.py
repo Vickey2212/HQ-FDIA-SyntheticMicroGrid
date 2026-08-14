@@ -207,7 +207,21 @@ def build_model(config):
 # RUN SINGLE EXPERIMENT
 # ============================================================
 
-
+def recall_at_fpr(y_true, y_score, target_fpr):
+    
+    fpr, tpr, thresholds = roc_curve(
+        y_true,
+        y_score,
+        drop_intermediate=False
+    )
+ 
+    valid = fpr <= target_fpr
+ 
+    if not np.any(valid):
+        return 0.0
+ 
+    return np.max(tpr[valid])
+    
 def compute_binary_metrics(y_true, y_pred, y_prob=None):
 
     tn, fp, fn, tp = confusion_matrix(y_true, y_pred).ravel()
@@ -219,16 +233,36 @@ def compute_binary_metrics(y_true, y_pred, y_prob=None):
 
     if y_prob is not None:
         try:
-            auc = metrics.roc_auc_score(y_true, y_prob)
+            auc = roc_auc_score(
+                y_true,
+                y_prob
+            )
+ 
+            recall_fpr_1 = recall_at_fpr(
+                y_true,
+                y_prob,
+                0.01        # 1%
+            )
+ 
+            recall_fpr_5 = recall_at_fpr(
+                y_true,
+                y_prob,
+                0.05        # 5%
+            )
+ 
         except ValueError:
-            # Handles cases where only one class is present
+ 
             auc = np.nan
+            recall_fpr_1 = np.nan
+            recall_fpr_5 = np.nan
     else:
         auc = np.nan
+        recall_fpr_1 = np.nan
+        recall_fpr_5 = np.nan
 
     tnr = tn / (tn + fp) if (tn + fp) > 0 else 0
 
-    fnr = fp / (tn + fp) if (tn + fp) > 0 else 0
+    fnr = fn / (fn + tp) if (fn + tp) > 0 else 0
 
     return {
         "ACC": acc,
@@ -242,6 +276,8 @@ def compute_binary_metrics(y_true, y_pred, y_prob=None):
         "FP": fp,
         "FN": fn,
         "TP": tp,
+        "Recall@1%FPR": recall_fpr_1,
+        "Recall@5%FPR": recall_fpr_5
     }
 
 def run_one_experiment(cfg, run):
@@ -360,6 +396,8 @@ def run_one_experiment(cfg, run):
       metrics["TNR"],
       metrics["FNR"],
       best_val_time,
+      metrics["Recall@1%FPR"],
+      metrics["Recall@5%FPR"],
       history_df
   )
 
@@ -414,6 +452,8 @@ for cfg in ABLATIONS:
             "AUC": auc,
             "TNR": tnr,
             "FNR": fnr,
+            "Recall@1%FPR": recall_1,
+            "Recall@5%FPR": recall_5,
             "VAL_TIME": val_time
         })
 
