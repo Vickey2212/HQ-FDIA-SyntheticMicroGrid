@@ -123,13 +123,13 @@ def build_model(config):
             def forward(self, node_ts, edge_ts, return_embedding=False):
 
                 # TCN
-                node_feat = self.tcn_node(node_ts)      # (B,N,32)
+                node_feat = self.tcn_node(node_ts)
 
                 # Remove graph learning
-                pooled = node_feat.mean(dim=1)          # (B,32)
+                pooled = node_feat.mean(dim=1)          
 
                 # Recover expected dimension
-                pooled = self.feature_projection(pooled)   # (B,64)
+                pooled = self.feature_projection(pooled)  
 
                 embedding = self.mlp(pooled)
 
@@ -159,7 +159,7 @@ def build_model(config):
             def __init__(self, n_buses, edge_list_1based):
                 super().__init__(n_buses, edge_list_1based)
 
-                # Raw temporal sequence → 32-dimensional features
+               
                 self.node_projection = nn.Sequential(
                     nn.Linear(train_ds.T, T_OUT),
                     nn.ReLU()
