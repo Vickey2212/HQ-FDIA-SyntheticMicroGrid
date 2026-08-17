@@ -426,7 +426,7 @@ for cfg in ABLATIONS:
 
     for run in range(1, N_RUNS + 1):
 
-        acc, prec, rec, f1, auc, tnr, fnr, val_time, history_df = run_one_experiment(cfg, run)
+        acc, prec, rec, f1, auc, tnr, fnr, recall_1, recall_5, val_time, history_df = run_one_experiment(cfg, run)
 
         # ----------------------------------------------------
         # SAVE CURVES CSV
