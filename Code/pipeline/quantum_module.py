@@ -18,13 +18,6 @@ class QuantumResidualBinary(nn.Module):
             q_layers=q_layers
         )
 
-        # quantum head
-        # self.q_head = nn.Sequential(
-        #     nn.Linear(n_qubits, 8),
-        #     nn.ReLU(),
-        #     nn.Linear(8, 1)
-        # )
-
         self.q_head = nn.Sequential(
             nn.Linear(n_qubits, 16),
             nn.ReLU(),
