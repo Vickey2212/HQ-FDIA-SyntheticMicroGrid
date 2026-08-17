@@ -33,7 +33,7 @@ class QuantumResidualBinary(nn.Module):
             nn.Linear(8, 1)
         )
 
-        # fusion weight (VERY IMPORTANT)
+        # fusion weight
         self.alpha = nn.Parameter(torch.tensor(0.05))
 
     def forward(self, node_ts, edge_ts):
