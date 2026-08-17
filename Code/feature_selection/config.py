@@ -12,8 +12,7 @@ from sklearn.ensemble import RandomForestClassifier
 # -------------------------
 CSV_PATH = PROJECT_ROOT / "data"
 
-# Choose one:
-LABEL_COL = "label_binary"   # or "label_multi"
+LABEL_COL = "label_binary" 
 
 # Number of top features to keep
 TOP_K = 40
