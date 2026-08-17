@@ -9,7 +9,6 @@ def train_embed_epoch_binary(model, loader, opt, loss_fn):
     for x, y in tqdm(loader, leave=False):
 
         x = x.to(DEVICE)
-        # y = y.to(DEVICE).float().unsqueeze(1)  
         y = y.to(DEVICE)
 
         opt.zero_grad()
