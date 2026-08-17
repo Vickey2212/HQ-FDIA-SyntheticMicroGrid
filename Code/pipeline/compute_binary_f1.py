@@ -1,23 +1,5 @@
 @torch.no_grad()
 def binary_f1_from_logits(logits, y, threshold=0.45):
-    """
-    Compute the binary F1 score from model logits.
-
-    Parameters
-    ----------
-    logits : torch.Tensor
-        Raw model outputs with shape (N, 1).
-    y : torch.Tensor
-        Ground-truth binary labels with shape (N,) or (N, 1).
-    threshold : float, default=0.45
-        Probability threshold used to convert sigmoid probabilities
-        into binary predictions.
-
-    Returns
-    -------
-    float
-        Binary F1 score.
-    """
 
     # Convert logits to probabilities
     probs = torch.sigmoid(logits).squeeze(1)
