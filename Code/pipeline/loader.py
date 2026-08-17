@@ -14,7 +14,7 @@ sampler = WeightedRandomSampler(
 
 train_loader = DataLoader(
     train_small,
-    batch_size=16,   # keep small for quantum
+    batch_size=16,
     sampler=sampler,
     collate_fn=collate_batch
 )
